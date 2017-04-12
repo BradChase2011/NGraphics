@@ -34,7 +34,7 @@ namespace NGraphics.WindowsStore.Custom
 		public WICBitmapCanvas (Size size, double scale = 1.0, bool transparency = true, Direct2DFactories factories = null)
 			: this (
 				// DIPs = pixels / (DPI/96.0)
-				new WIC.Bitmap ((factories ?? Direct2DFactories.Shared).WICFactory, (int)(Math.Ceiling (size.Width * scale)), (int)(Math.Ceiling (size.Height * scale)), transparency ? WIC.PixelFormat.Format32bppPBGRA : WIC.PixelFormat.Format32bppBGR, WIC.BitmapCreateCacheOption.CacheOnLoad),
+				new WIC.Bitmap ((factories ?? Direct2DFactories.Shared).WICFactory, (int)(Math.Ceiling (size.Width * scale)), (int)(Math.Ceiling (size.Height * scale)), transparency ? WIC.PixelFormat.Format32bppPRGBA : WIC.PixelFormat.Format32bppRGBA, WIC.BitmapCreateCacheOption.CacheOnLoad),
 				new D2D1.RenderTargetProperties (D2D1.RenderTargetType.Default, new D2D1.PixelFormat (DXGI.Format.Unknown, D2D1.AlphaMode.Unknown), (float)(96.0 * scale), (float)(96.0 * scale), D2D1.RenderTargetUsage.None, D2D1.FeatureLevel.Level_DEFAULT))
 		{
 		}
@@ -316,7 +316,7 @@ namespace NGraphics.WindowsStore.Custom
 
 			var wbi = image as WICBitmapSourceImage;
 			if (wbi != null) {
-				Guid renderFormat = WIC.PixelFormat.Format32bppPBGRA;
+				Guid renderFormat = WIC.PixelFormat.Format32bppPRGBA;
 				if (wbi.Bitmap.PixelFormat != renderFormat) {
 					//System.Diagnostics.Debug.WriteLine ("RT  FORMAT: " + renderTarget.PixelFormat.Format);
 					//System.Diagnostics.Debug.WriteLine ("BMP FORMAT: " + wbi.Bitmap.PixelFormat);

@@ -28,7 +28,7 @@ namespace NGraphics.WindowsStore.Custom
 		public IImage CreateImage (NGraphics.Custom.Models.Color[] colors, int width, double scale = 1.0)
 		{
 			var factories = Direct2DFactories.Shared;
-			var pf = WIC.PixelFormat.Format32bppBGRA;
+			var pf = WIC.PixelFormat.Format32bppRGBA;
 
 			unsafe {
 				fixed (NGraphics.Custom.Models.Color* p = colors) {
@@ -48,7 +48,7 @@ namespace NGraphics.WindowsStore.Custom
 			var d = new WIC.BitmapDecoder (factories.WICFactory, stream, WIC.DecodeOptions.CacheOnDemand);
 			WIC.BitmapSource b = d.GetFrame (0);
 
-			var renderFormat = WIC.PixelFormat.Format32bppPBGRA;
+			var renderFormat = WIC.PixelFormat.Format32bppPRGBA;
 			if (b.PixelFormat != renderFormat) {
 				//System.Diagnostics.Debug.WriteLine ("BMP FORMAT: " + b.PixelFormat);
 				var c = new WIC.FormatConverter (factories.WICFactory);
