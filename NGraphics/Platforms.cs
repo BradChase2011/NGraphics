@@ -9,6 +9,8 @@ using NGraphics.Android.Custom;
 using NGraphics.WindowsStore.Custom;
 #elif __IOS__
 using NGraphics.iOS.Custom;
+#elif MAC
+using NGraphics.iOS.Custom;
 #else
 using NGraphics.Net.Custom;
 #endif
