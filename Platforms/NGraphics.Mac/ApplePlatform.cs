@@ -562,7 +562,16 @@ namespace NGraphics.iOS.Custom
 			var c = (CGImageImage)image;
 			return new AppKit.NSImage (c.Image, Conversions.GetCGSize (c.Size));
 		}
-		#endif
+
+		public static CGImage GetCGImage(this IImage image)
+		{
+			CGImageImage ret = image as CGImageImage;
+			if (ret == null)
+				return null;
+
+			return ret.Image as CGImage;
+		}
+#endif
 	}
 }
 
