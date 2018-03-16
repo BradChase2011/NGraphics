@@ -5,7 +5,7 @@ using NGraphics.Custom;
 using NGraphics.Custom.Interfaces;
 #if __ANDROID__
 using NGraphics.Android.Custom;
-#elif NETFX_CORE
+#elif NETFX_CORE && !__NETCORE__
 using NGraphics.WindowsStore.Custom;
 #elif __IOS__
 using NGraphics.iOS.Custom;
@@ -27,16 +27,16 @@ namespace NGraphics.Custom
 		public static IPlatform Current {
 			get {
 				if (current == null) {
-					#if MAC
+#if MAC
 					current = new ApplePlatform ();
-					#elif __IOS__
+#elif __IOS__
 					current = new ApplePlatform ();
-					#elif __ANDROID__
+#elif __ANDROID__
 					current = new AndroidPlatform ();
-          #elif NETFX_CORE
+#elif NETFX_CORE && !__NETCORE__
           current = new WinRTPlatform();
-          #else
-          current = new SystemDrawingPlatform ();
+#else
+                    current = new SystemDrawingPlatform ();
           #endif
                              }
 				return current;

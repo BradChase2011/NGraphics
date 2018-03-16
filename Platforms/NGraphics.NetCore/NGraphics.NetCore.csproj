@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP1_1</DefineConstants>
+    <OutputPath>bin\Debug\</OutputPath>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\NGraphics\Platforms.cs" Link="Platforms.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoreCompat.System.Drawing.v2" Version="5.2.0-preview1-r131" />
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NGraphics\NGraphics.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
